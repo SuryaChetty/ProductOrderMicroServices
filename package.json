@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "jquery": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/jquery": "^4.0.1"
+  }
+}

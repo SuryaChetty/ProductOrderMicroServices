@@ -1,0 +1,55 @@
+﻿
+<html>
+<body>
+
+    <h1>Web API - Get</h1>
+
+    <form>
+        <input type="button" id="button1" value="Get data" />
+
+        <table id="table1" border="1"></table>
+    </form>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
+
+    <script>
+
+        $("#button1").click(fun1);
+
+        function fun1() {
+
+            $.ajax({
+                url: "http://localhost:5062/api/Orderr",
+                type: "GET",
+                success: fun2,
+                error: fun3
+            });
+
+        }
+
+        function fun2(response) {
+
+            $("#table1").html(
+                "<tr><th>Product ID</th><th>Name</th><th>Price</th></tr>"
+            );
+
+            for (var i = 0; i < response.length; i++) {
+
+                $("#table1").append(
+                    "<tr><td>" + response[i].productID +
+                    "</td><td>" + response[i].productName +
+                    "</td><td>" + response[i].price +
+                    "</td></tr>"
+                );
+            }
+        }
+
+        function fun3(xhr) {
+            alert(xhr.responseText);
+        }
+
+    </script>
+
+</body>
+</html>
